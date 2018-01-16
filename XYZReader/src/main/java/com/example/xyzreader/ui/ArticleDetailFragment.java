@@ -58,6 +58,7 @@ public class ArticleDetailFragment extends Fragment implements
     private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
     private ColorDrawable mStatusBarColorDrawable;
     private FloatingActionButton fab;
+    private View mUpButton;
 
     private int mTopInset;
     private ImageView mPhotoView;
@@ -133,6 +134,13 @@ public class ArticleDetailFragment extends Fragment implements
 
         mStatusBarColorDrawable = new ColorDrawable(0);
 
+        mUpButton = mRootView.findViewById(R.id.action_up);
+        mUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivityCast().onSupportNavigateUp();
+            }
+        });
         fab = (FloatingActionButton) mRootView.findViewById(R.id.share_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
