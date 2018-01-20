@@ -8,6 +8,9 @@ import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -46,7 +49,7 @@ public class ArticleListActivity extends AppCompatActivity implements
     private Toolbar mToolbar;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
-
+    CoordinatorLayout coordinatorLayout;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
     // Use default locale format
     private SimpleDateFormat outputFormat = new SimpleDateFormat();
@@ -60,7 +63,7 @@ public class ArticleListActivity extends AppCompatActivity implements
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
-
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.collapsingToolbarLayoutactivity);
         final View toolbarContainerView = findViewById(R.id.toolbar_container);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
@@ -113,6 +116,7 @@ public class ArticleListActivity extends AppCompatActivity implements
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+
         Adapter adapter = new Adapter(cursor);
         adapter.setHasStableIds(true);
         mRecyclerView.setAdapter(adapter);
@@ -120,6 +124,10 @@ public class ArticleListActivity extends AppCompatActivity implements
         StaggeredGridLayoutManager sglm =
                 new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(sglm);
+        Snackbar snackbar = Snackbar
+                .make(coordinatorLayout, "Data Was loaded ", Snackbar.LENGTH_LONG);
+        snackbar.show();
+
     }
 
     @Override
@@ -161,6 +169,8 @@ public class ArticleListActivity extends AppCompatActivity implements
             } catch (ParseException ex) {
                 Log.e(TAG, ex.getMessage());
                 Log.i(TAG, "passing today's date");
+
+
                 return new Date();
             }
         }
