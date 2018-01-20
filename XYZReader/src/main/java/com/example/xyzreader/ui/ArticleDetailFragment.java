@@ -127,14 +127,6 @@ public class ArticleDetailFragment extends Fragment implements
         collapsingToolbarLayout = (CollapsingToolbarLayout) mRootView.findViewById(R.id.CollapsingToolbarLayout);
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
         Toolbar toolbar= (Toolbar) mRootView.findViewById(R.id.Toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (NavUtils.getParentActivityName(getActivity()) != null) {
-                    NavUtils.navigateUpFromSameTask(getActivity());
-                }
-            }
-        });
 
 //        --------------------------------------------------------
 
