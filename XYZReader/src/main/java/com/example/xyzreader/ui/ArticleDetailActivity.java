@@ -89,7 +89,7 @@ public class ArticleDetailActivity extends AppCompatActivity
                     view.onApplyWindowInsets(windowInsets);
                     mTopInset = windowInsets.getSystemWindowInsetTop();
                     mUpButtonContainer.setTranslationY(mTopInset);
-                    updateUpButtonPosition();
+//                    updateUpButtonPosition();
                     return windowInsets;
                 }
             });
@@ -142,7 +142,7 @@ public class ArticleDetailActivity extends AppCompatActivity
     }
 
     private void updateUpButtonPosition() {
-        int upButtonNormalBottom = mTopInset + mUpButton.getHeight();
+//        int upButtonNormalBottom = mTopInset + mUpButton.getHeight();
     }
 
     private class MyPagerAdapter extends FragmentStatePagerAdapter {
