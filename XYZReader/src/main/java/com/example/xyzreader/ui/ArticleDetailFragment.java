@@ -131,28 +131,6 @@ public class ArticleDetailFragment extends Fragment implements
 //        --------------------------------------------------------
 
 
-        //        mDrawInsetsFrameLayout = (DrawInsetsFrameLayout)
-//                mRootView.findViewById(R.id.draw_insets_frame_layout);
-//        mDrawInsetsFrameLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
-//            @Override
-//            public void onInsetsChanged(Rect insets) {
-//                mTopInset = insets.top;
-//            }
-//        });
-//
-//        mScrollView = (ObservableScrollView) mRootView.findViewById(R.id.scrollview);
-//        mScrollView.setCallbacks(new ObservableScrollView.Callbacks() {
-//            @Override
-//            public void onScrollChanged() {
-//                mScrollY = mScrollView.getScrollY();
-//                getActivityCast().onUpButtonFloorChanged(mItemId, ArticleDetailFragment.this);
-//                mPhotoContainerView.setTranslationY((int) (mScrollY - mScrollY / PARALLAX_FACTOR));
-//                updateStatusBar();
-//            }
-//        });
-
-//        mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
-
         mStatusBarColorDrawable = new ColorDrawable(0);
 
         mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
@@ -228,7 +206,6 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
-//            titleView.setText();
             collapsingToolbarLayout.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
             Date publishedDate = parsePublishedDate();
             if (!publishedDate.before(START_OF_EPOCH.getTime())) {
